@@ -2,6 +2,7 @@
 
 // Get object used to show the password
 var generateBtn = document.querySelector("#generate");
+var passwordText = document.querySelector("#password");
 
 // Set variables for each criteria
 var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -10,51 +11,90 @@ var symbols = "!#$%&'()*+,-./:;<=>?@^[\\]^_`{|}~";
 var numbers = "0123456789";
 
 // Set conditions for each user inputs
+var numofchars = 0;
 var useuppercase = "n";
 var uselowercase = "n";
 var usesymbols = "n";
 var usenumbers = "n";
 
-// Password needs to be global
-// var password = "";
-
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  // console.log(password);
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  var loadpassword = generatePassword();
+  passwordText.value = loadpassword;
 }
 
-function generatePassword(
-  numofchars,
-  useuppercase,
-  uselowercase,
-  usenumbers,
-  usesymbols
-) {
+function generatePassword() {
+  // Set local variables
   var charCount = 0;
-  var loadPassword = "";
-  while (charCount <= numofchars) {
-    if (useuppercase == "y") {
-      var addchar = uppercase[Math.floor(Math.random() * uppercase.length)];
-      console.log("addchar: ", addchar);
-      loadPassword = loadPassword.concat(addchar);
-      console.log("loadPassword: ", loadPassword);
+  var password = "";
+
+  // Make sure each criteria is present
+  while (charCount < numofchars) {
+    if (useuppercase == "y" && charCount < numofchars) {
+      password = password.concat(
+        uppercase[Math.floor(Math.random() * uppercase.length)]
+      );
       charCount++;
+      console.log(password);
+      console.log(charCount);
+    }
+    if (uselowercase == "y" && charCount < numofchars) {
+      password = password.concat(
+        lowercase[Math.floor(Math.random() * lowercase.length)]
+      );
+      charCount++;
+      console.log(password);
+      console.log(charCount);
+    }
+    if (usenumbers == "y" && charCount < numofchars) {
+      password = password.concat(
+        numbers[Math.floor(Math.random() * numbers.length)]
+      );
+      charCount++;
+      console.log(password);
+      console.log(charCount);
+    }
+    if (usesymbols == "y" && charCount < numofchars) {
+      password = password.concat(
+        symbols[Math.floor(Math.random() * symbols.length)]
+      );
+      charCount++;
+      console.log(password);
+      console.log(charCount);
     }
   }
-  // console.log(loadPassword);
-  return loadPassword;
+  return password;
 }
 
-function pomptForMessage(msg, msgType) {
-  // Set loop variable
-  var promptAnswer = "";
+function getPrompts() {
+  // Prompt user for password specifications
+  // Call pomptForMessage passing in the message to prompt and the type of check.
+  // Type of check
+  // 1 = Numbers from 8-128
+  // 2 = Yes/No prompt
 
-  // Keep user in loop until a valid response
+  var msg = "How many characters?";
+  numofchars = pomptForMessage(msg, 1);
+
+  var msg = "Use UPPERCASE letters (y/n)?";
+  useuppercase = pomptForMessage(msg, 2);
+
+  var msg = "Use lowercase letters (y/n)?";
+  uselowercase = pomptForMessage(msg, 2);
+
+  var msg = "Use numbers (y/n)?";
+  usenumbers = pomptForMessage(msg, 2);
+
+  var msg = "Use symbols (y/n)?";
+  usesymbols = pomptForMessage(msg, 2);
+}
+
+// Created prompt for messages to practice call to functions
+function pomptForMessage(msg, msgType) {
+  // Set local variables
   var oktocontinue = "n";
+
+  // Loop until you get a valid answer
   while (oktocontinue == "n") {
     // Prompt User
     var promptAnswer = prompt(msg);

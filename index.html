@@ -30,38 +30,8 @@
       </div>
     </div>
     <script src="script.js"></script>
-
     <script>
-      // Prompt user for password specifications
-
-      var msg = "How many characters?";
-      numofchars = pomptForMessage(msg, 1);
-
-      var msg = "Use UPPERCASE letters (y/n)?";
-      useuppercase = pomptForMessage(msg, 2);
-
-      var msg = "Use lowercase letters (y/n)?";
-      uselowercase = pomptForMessage(msg, 2);
-
-      var msg = "Use numbers (y/n)?";
-      usenumbers = pomptForMessage(msg, 2);
-
-      var msg = "Use symbols (y/n)?";
-      usesymbols = pomptForMessage(msg, 2);
-
-      console.log("numofchars: " + numofchars);
-      console.log("useuppercase: " + useuppercase);
-      console.log("uselowercase: " + uselowercase);
-      console.log("usenumbers: " + usenumbers);
-      console.log("usesymbols: " + usesymbols);
-
-      generatePassword(
-        numofchars,
-        useuppercase,
-        uselowercase,
-        usenumbers,
-        usesymbols
-      );
+      getPrompts();
     </script>
   </body>
 </html>
