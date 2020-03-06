@@ -37,3 +37,4 @@ Shawn Hayes
 ## Acknowledgments
 
 Bootcamp Teacher, TA's, and of coarse my classmates!
+https://the3dwebcoder.typepad.com/blog/2015/03/preparing-for-processing-query-string-server-arguments.html
