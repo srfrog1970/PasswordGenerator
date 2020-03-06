@@ -28,39 +28,32 @@ function generatePassword() {
   var charCount = 0;
   var password = "";
 
-  // Make sure each criteria is present
+  // Loop through until we reach the number of characters user requested.
   while (charCount < numofchars) {
+    // Check each criteria for use and ensure we have not hit the number of characters user requested.
     if (useuppercase == "y" && charCount < numofchars) {
       password = password.concat(
         uppercase[Math.floor(Math.random() * uppercase.length)]
       );
       charCount++;
-      console.log(password);
-      console.log(charCount);
     }
     if (uselowercase == "y" && charCount < numofchars) {
       password = password.concat(
         lowercase[Math.floor(Math.random() * lowercase.length)]
       );
       charCount++;
-      console.log(password);
-      console.log(charCount);
     }
     if (usenumbers == "y" && charCount < numofchars) {
       password = password.concat(
         numbers[Math.floor(Math.random() * numbers.length)]
       );
       charCount++;
-      console.log(password);
-      console.log(charCount);
     }
     if (usesymbols == "y" && charCount < numofchars) {
       password = password.concat(
         symbols[Math.floor(Math.random() * symbols.length)]
       );
       charCount++;
-      console.log(password);
-      console.log(charCount);
     }
   }
   return password;
@@ -69,7 +62,7 @@ function generatePassword() {
 function getPrompts() {
   // Prompt user for password specifications
   // Call pomptForMessage passing in the message to prompt and the type of check.
-  // Type of check
+  // Type of check =
   // 1 = Numbers from 8-128
   // 2 = Yes/No prompt
 
